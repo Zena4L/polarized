@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 class CatalogController (private val bookService: BookService, private val property : PolarProperties){
 
     @GetMapping
-    fun get() : Iterable<Book?>? {
+    fun get() : MutableList<Book> {
         return bookService.viewBookList()
     }
 

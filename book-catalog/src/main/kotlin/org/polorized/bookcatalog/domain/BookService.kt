@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service
 @Service
 class BookService(val bookRepository: BookRepository) {
 
-    fun viewBookList(): Iterable<Book?>? {
-        return bookRepository.findAll()
-    }
+    fun viewBookList(): MutableList<Book> = bookRepository.findAll()
+
 
     fun viewBookDetails(isbn: String): Book? {
-        return bookRepository.findByIsbn(isbn) ?: throw Exception("No such book")
+        return bookRepository.findByIsbn(isbn) ?: throw BookNotFoundException("No such book")
     }
 
     fun addBookToCatalog(book: Book): Book {
@@ -20,8 +19,6 @@ class BookService(val bookRepository: BookRepository) {
     }
 
     fun removerBookFromCatalog(isbn: String) {
-        if (bookRepository.existsByIsbn(isbn)) throw RuntimeException("No such book")
-
         bookRepository.deleteByIsbn(isbn)
     }
 
