@@ -7,7 +7,13 @@
         <option value="$PROJECT_DIR$/catalog-service/pom.xml" />
         <option value="$PROJECT_DIR$/config-repo/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/book-catalog/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/catalog-service/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager">
