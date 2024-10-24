@@ -1,18 +1,18 @@
 package org.polorized.bookcatalog.domain
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Pattern
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
+import org.springframework.data.annotation.Version
+import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.math.BigDecimal
 import java.time.Instant
 
 
 @Entity
+@EntityListeners(AuditingEntityListener::class)
 class Book(
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -35,11 +35,13 @@ class Book(
     val price: BigDecimal,
 
     @CreatedDate
-    val createdDate: Instant? = null,
+    @Column(updatable = false)
+    var createdDate: Instant? = null,
 
     @LastModifiedDate
     val lastModifiedDate: Instant? = null,
 
+    @Version
     var version: Int? = null
 ) {
 }

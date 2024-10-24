@@ -22,6 +22,6 @@ jobs:
           chmod +x ./catalog-service/mvnw
 
       - name: Build the project
-        working-directory: ./catalog-service
+        working-directory: ./book-catalog
         run: |
           ./mvnw clean install
