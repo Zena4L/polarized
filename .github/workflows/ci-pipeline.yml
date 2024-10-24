@@ -18,7 +18,10 @@ jobs:
           cache: maven
 
       - name: Grant execute permissions for Maven wrapper
-        run: chmod +x ./mvnw
+        run: |
+          chmod +x ./catalog-service/mvnw
 
-      - name: Compile and test application
-        run: ./mvnw clean install
+      - name: Build the project
+        working-directory: ./catalog-service
+        run: |
+          ./mvnw clean install
