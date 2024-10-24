@@ -1,6 +1,7 @@
 package org.polorized.catalogservice.controller
 
 import jakarta.validation.Valid
+import org.polorized.catalogservice.config.PolarProperties
 import org.polorized.catalogservice.domain.Book
 import org.polorized.catalogservice.domain.BookService
 import org.springframework.hateoas.CollectionModel
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/catalog")
-class CatalogController (private val bookService: BookService){
+class CatalogController (private val bookService: BookService, private val property : PolarProperties){
 
     @GetMapping
     fun get() : Iterable<Book?>? {
@@ -45,6 +46,9 @@ class CatalogController (private val bookService: BookService){
     fun put(@PathVariable isbn: String, @Valid @RequestBody book : Book) : Book {
         return bookService.editBookDetails(isbn,book)
     }
+
+    @GetMapping("/hello")
+    fun hello() = property.greeting
 
 
 }

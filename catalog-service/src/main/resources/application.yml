@@ -11,4 +11,8 @@ spring:
   mvc:
     servlet:
       path: "/api/v1"
+  profiles:
+    active: test-data
 
+polar:
+  greeting: Welcome to polar books cloud native
