@@ -22,5 +22,3 @@ jobs:
 
       - name: Compile and test application
         run: ./mvnw clean install
-
-
