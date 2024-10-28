@@ -32,13 +32,13 @@ jobs:
           sleep 10 # Wait for the server to start
 
       # Verify Config Server Availability
-#      - name: Wait for config-server to be available
-#        run: |
-#          until $(curl --output /dev/null --silent --head --fail http://localhost:8888); do
-#            echo "Waiting for config-server..."
-#            sleep 5
-#          done
-#        timeout-minutes: 1
+      - name: Wait for config-server to be available
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://localhost:8888); do
+            echo "Waiting for config-server..."
+            sleep 5
+          done
+        timeout-minutes: 1
 
       # Build Book Catalog Service
       - name: Grant execute permissions for Maven wrapper (book-catalog)
