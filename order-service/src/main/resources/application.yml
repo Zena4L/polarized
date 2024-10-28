@@ -28,3 +28,7 @@ server:
   shutdown: graceful
   netty:
     connection-timeout: 2s
+
+
+polar:
+  catalog-service-url: "http://localhost:3000"

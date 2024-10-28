@@ -14,7 +14,8 @@ import java.time.Instant;
 
 @Builder
 @Table("orders")
-public record Order(@Id int id, String bookIsbn, String bookName, BigDecimal bookPrice, OrderStatus orderStatus,
+public record Order(@Id int id, String bookIsbn, String bookName, int quantity, BigDecimal bookPrice,
+                    OrderStatus orderStatus,
 
                     @CreatedDate Instant createdDate,
 
