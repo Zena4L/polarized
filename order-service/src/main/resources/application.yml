@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: order-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-read-timeout: 2000
+      request-connect-timeout: 5000
+      fail-fast: true
+  r2dbc:
+    username: admin
+    password: password
+    url: r2dbc:postgresql://localhost:5431/order
+    pool:
+      max-create-connection-time: 2s
+      max-size: 10
+  flyway:
+    user: ${spring.r2dbc.username}
+    password: ${spring.r2dbc.password}
+    url: jdbc:postgresql://localhost:5431/order
+
+server:
+  port: 3002
+  shutdown: graceful
+  netty:
+    connection-timeout: 2s

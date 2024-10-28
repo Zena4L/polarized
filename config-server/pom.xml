@@ -77,7 +77,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>zena07/catalog-service:latest</name>
+                        <name>zena07/config-server:latest</name>
                         <env>
                             <BP_JVM_VERSION>17.*</BP_JVM_VERSION>
                         </env>

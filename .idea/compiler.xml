@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="book-catalog" />
         <module name="config-server" />
+        <module name="order-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="book-catalog" options="-parameters" />
       <module name="catalog-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
+      <module name="order-service" options="-parameters" />
     </option>
   </component>
 </project>
