@@ -17,7 +17,7 @@ jobs:
           java-version: 17
           cache: maven
 
-      # Step to build `config-server` first
+      # Build and Start Config Server
       - name: Grant execute permissions for Maven wrapper (config-server)
         run: chmod +x ./config-server/mvnw
 
@@ -25,7 +25,22 @@ jobs:
         working-directory: ./config-server
         run: ./mvnw clean install
 
-      # Step to build `book-catalog` after `config-server`
+      - name: Start config-server
+        working-directory: ./config-server
+        run: |
+          nohup ./mvnw spring-boot:run &
+          sleep 10 # Wait for the server to start
+
+      # Verify Config Server Availability
+      - name: Wait for config-server to be available
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://localhost:8888); do
+            echo "Waiting for config-server..."
+            sleep 5
+          done
+        timeout-minutes: 2
+
+      # Build Book Catalog Service
       - name: Grant execute permissions for Maven wrapper (book-catalog)
         run: chmod +x ./book-catalog/mvnw
 
