@@ -17,11 +17,18 @@ jobs:
           java-version: 17
           cache: maven
 
-      - name: Grant execute permissions for Maven wrapper
-        run: |
-          chmod +x ./catalog-service/mvnw
+      # Step to build `config-server` first
+      - name: Grant execute permissions for Maven wrapper (config-server)
+        run: chmod +x ./config-server/mvnw
 
-      - name: Build the project
+      - name: Build config-server
+        working-directory: ./config-server
+        run: ./mvnw clean install
+
+      # Step to build `book-catalog` after `config-server`
+      - name: Grant execute permissions for Maven wrapper (book-catalog)
+        run: chmod +x ./book-catalog/mvnw
+
+      - name: Build book-catalog
         working-directory: ./book-catalog
-        run: |
-          ./mvnw clean install
+        run: ./mvnw clean install
