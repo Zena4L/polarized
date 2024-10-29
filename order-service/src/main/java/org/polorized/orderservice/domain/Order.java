@@ -1,8 +1,6 @@
 package org.polorized.orderservice.domain;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -22,6 +20,5 @@ public record Order(@Id int id, String bookIsbn, String bookName, int quantity, 
                     @LastModifiedDate Instant modifiedDate,
 
                     @Version int version) {
-
 
 }
