@@ -31,6 +31,12 @@ services:
       - catalog-network  # Corrected network name
     restart: unless-stopped
 
+  polar-redis:
+    image: "redis:latest"
+    container_name: "polar_redis"
+    ports:
+      - "6379:6379"
+
   catalog-service:
     depends_on:
       - postgres
