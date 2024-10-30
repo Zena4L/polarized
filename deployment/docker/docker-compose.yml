@@ -67,6 +67,19 @@ services:
       - catalog-network
     restart: unless-stopped
 
+  polar-rabbitmq:
+    image: rabbitmq:latest
+    container_name: polar-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - catalog-network
+
+
 networks:
   catalog-network:
     driver: bridge

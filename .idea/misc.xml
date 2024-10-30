@@ -10,11 +10,14 @@
         <option value="$PROJECT_DIR$/book-catalog/pom.xml" />
         <option value="$PROJECT_DIR$/order-service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dispatcher-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dispatch-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/catalog-service/pom.xml" />
+        <option value="$PROJECT_DIR$/dispatcher-service/pom.xml" />
       </set>
     </option>
   </component>
