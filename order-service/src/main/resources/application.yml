@@ -6,11 +6,26 @@ spring:
   config:
     import: "optional:configserver:"
   cloud:
+    function:
+      definition: dispatchedOrder
+    stream:
+      bindings:
+        dispatchOrder-in-0:
+          destination: order-dispatched
+          group: ${spring.application.name}
+        acceptOrder-out-0:
+          destination: order-accepted
+      output-bindings: acceptOrder
+  rabbitmq:
     config:
       uri: http://localhost:8888
       request-read-timeout: 2000
       request-connect-timeout: 5000
-#      fail-fast: true
+    host: localhost
+    username: guest
+    password: guest
+    connection-timeout: 5s
+  #      fail-fast: true
   r2dbc:
     username: admin
     password: password
