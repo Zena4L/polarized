@@ -79,6 +79,24 @@ services:
     networks:
       - catalog-network
 
+  polar-keycloak:
+    image: quay.io/keycloak/keycloak:26.0.4
+    container_name: "polar-keycloak"
+    volumes:
+      - ./keycloak:/opt/keycloak/imports
+    environment:
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=admin
+      - KC_IMPORT=/opt/keycloak/imports/realm-config.json
+    command: [ "start-dev" ]
+    ports:
+      - "8080:8080"
+    networks:
+      - catalog-network
+
+
+
+
 
 networks:
   catalog-network:
